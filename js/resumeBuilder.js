@@ -14,6 +14,12 @@ var bio = {
         "Bootstrap", "KnockoutJS"]
 };
 
+var work = {};
+work.position = "Software Engineer";
+work.employer = "Microsoft Corp.";
+work.years = "2.5 years";
+work.city = "Redmond, WA, USA";
+
 var dataReplace = "%data%";
 $("#header").prepend(HTMLheaderRole.replace(dataReplace, bio.role));
 $("#header").prepend(HTMLheaderName.replace(dataReplace, bio.name));
@@ -25,3 +31,9 @@ $("#topContacts").append(HTMLgithub.replace(dataReplace, bio.contactInfo.github)
 $("#header").append(HTMLwelcomeMsg.replace(dataReplace, bio.welcomeMessage));
 $("#header").append(HTMLskillsStart);
 $("#skills").append(HTMLskills.replace(dataReplace, bio.skills.join(", ")));
+
+$("#workExperience").append(HTMLworkStart);
+var htmlWorkSelector = $(".work-entry").last();
+htmlWorkSelector.append(HTMLworkEmployer.replace(dataReplace, work.employer));
+htmlWorkSelector.append(HTMLworkTitle.replace(dataReplace, work.position));
+htmlWorkSelector.append(HTMLworkDates.replace(dataReplace, work.years))
