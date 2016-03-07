@@ -34,6 +34,6 @@ $("#skills").append(HTMLskills.replace(dataReplace, bio.skills.join(", ")));
 
 $("#workExperience").append(HTMLworkStart);
 var htmlWorkSelector = $(".work-entry").last();
-htmlWorkSelector.append(HTMLworkEmployer.replace(dataReplace, work.employer));
-htmlWorkSelector.append(HTMLworkTitle.replace(dataReplace, work.position));
+htmlWorkSelector.append(HTMLworkEmployer.replace(dataReplace, work.employer) +
+    HTMLworkTitle.replace(dataReplace, work.position));
 htmlWorkSelector.append(HTMLworkDates.replace(dataReplace, work.years))
