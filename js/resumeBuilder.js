@@ -53,4 +53,3 @@ htmlSchoolSelector.append(HTMLschoolName.replace(dataReplace, education.school) 
 htmlSchoolSelector.append(HTMLschoolDates.replace(dataReplace, education.years));
 htmlSchoolSelector.append(HTMLschoolLocation.replace(dataReplace, education.city));
 htmlSchoolSelector.append(HTMLschoolMajor.replace(dataReplace, education.major));
-
