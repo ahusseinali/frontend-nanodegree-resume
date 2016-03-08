@@ -37,6 +37,18 @@ var education = {
     }]
 };
 
+var projects = [{
+    "title": "Microsoft GigJam",
+    "dates": "Novemer 2014 to September 2015"
+    "description": "Microsoft GigJam is a cross platform app that improves the sharing experience.\n" +
+        "The app has gadgets that you can add, edit and share with others in an online session or " +
+        "in an offline mode. Editing the gadgets can be collaborative. That means changes appear " +
+        "in real time at all the session users screen.\nEven better, GigJam allows cutomized sharing of" +
+        "gadgets for different users. That means every session can contain different gadgets and they can all " +
+        "be open simultaneously.\nThis tremendously improves business productivity.",
+    "image": "https://pbs.twimg.com/profile_images/620570299772186624/0iYMfE43_400x400.png"
+}]
+
 var dataReplace = "%data%";
 $("#header").prepend(HTMLheaderRole.replace(dataReplace, bio.role));
 $("#header").prepend(HTMLheaderName.replace(dataReplace, bio.name));
