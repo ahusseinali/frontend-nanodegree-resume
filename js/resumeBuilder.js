@@ -37,3 +37,5 @@ var htmlWorkSelector = $(".work-entry").last();
 htmlWorkSelector.append(HTMLworkEmployer.replace(dataReplace, work.employer) +
     HTMLworkTitle.replace(dataReplace, work.position));
 htmlWorkSelector.append(HTMLworkDates.replace(dataReplace, work.years));
+htmlWorkSelector.append(HTMLworkLocation.replace(dataReplace, work.city));
+
