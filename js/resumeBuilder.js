@@ -20,6 +20,13 @@ work.employer = "Microsoft Corp.";
 work.years = "2.5 years";
 work.city = "Redmond, WA, USA";
 
+var education = {};
+education["school"] = "Faculty of Engineering, Cairo University";
+education["degree"] = "Bachelor Degree";
+education["years"] = "5 years";
+education["city"] = "Giza, Egypt";
+education["major"] = "Computer Engineering";
+
 var dataReplace = "%data%";
 $("#header").prepend(HTMLheaderRole.replace(dataReplace, bio.role));
 $("#header").prepend(HTMLheaderName.replace(dataReplace, bio.name));
@@ -38,4 +45,12 @@ htmlWorkSelector.append(HTMLworkEmployer.replace(dataReplace, work.employer) +
     HTMLworkTitle.replace(dataReplace, work.position));
 htmlWorkSelector.append(HTMLworkDates.replace(dataReplace, work.years));
 htmlWorkSelector.append(HTMLworkLocation.replace(dataReplace, work.city));
+
+$("#education").append(HTMLschoolStart);
+var htmlSchoolSelector = $(".education-entry").last();
+htmlSchoolSelector.append(HTMLschoolName.replace(dataReplace, education.school) +
+    HTMLschoolDegree.replace(dataReplace, education.degree));
+htmlSchoolSelector.append(HTMLschoolDates.replace(dataReplace, education.years));
+htmlSchoolSelector.append(HTMLschoolLocation.replace(dataReplace, education.city));
+htmlSchoolSelector.append(HTMLschoolMajor.replace(dataReplace, education.major));
 
