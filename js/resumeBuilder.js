@@ -22,11 +22,19 @@ var work = {
 };
 
 var education = {
-    "school": "Faculty of Engineering, Cairo University",
-    "degree": "BA",
-    "years": "5 years",
-    "city": "Giza, Egypt",
-    "major": "Computer Engineering"
+    "schools": [{
+        "school": "Faculty of Engineering, Cairo University",
+        "degree": "BA",
+        "years": "5 years",
+        "city": "Giza, Egypt",
+        "major": "Computer Engineering"
+    }],
+    "onlineCourses": [{
+        "title": "Front-End Web Developer Nanodegree",
+        "school": "Udacity",
+        "dates": 2016,
+        "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+    }]
 };
 
 var dataReplace = "%data%";
@@ -50,8 +58,8 @@ htmlWorkSelector.append(HTMLworkLocation.replace(dataReplace, work.city));
 
 $("#education").append(HTMLschoolStart);
 var htmlSchoolSelector = $(".education-entry").last();
-htmlSchoolSelector.append(HTMLschoolName.replace(dataReplace, education.school) +
-    HTMLschoolDegree.replace(dataReplace, education.degree));
-htmlSchoolSelector.append(HTMLschoolDates.replace(dataReplace, education.years));
-htmlSchoolSelector.append(HTMLschoolLocation.replace(dataReplace, education.city));
-htmlSchoolSelector.append(HTMLschoolMajor.replace(dataReplace, education.major));
+htmlSchoolSelector.append(HTMLschoolName.replace(dataReplace, education.schools[0].school) +
+    HTMLschoolDegree.replace(dataReplace, education.schools[0].degree));
+htmlSchoolSelector.append(HTMLschoolDates.replace(dataReplace, education.schools[0].years));
+htmlSchoolSelector.append(HTMLschoolLocation.replace(dataReplace, education.schools[0].city));
+htmlSchoolSelector.append(HTMLschoolMajor.replace(dataReplace, education.schools[0].major));
