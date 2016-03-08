@@ -14,18 +14,20 @@ var bio = {
         "Bootstrap", "KnockoutJS"]
 };
 
-var work = {};
-work.position = "Software Engineer";
-work.employer = "Microsoft Corp.";
-work.years = "2.5 years";
-work.city = "Redmond, WA, USA";
+var work = {
+    "position": "Software Engineer",
+    "employer": "Microsoft Corp.",
+    "years": "2.5 years",
+    "city": "Redmond, WA, USA"
+};
 
-var education = {};
-education["school"] = "Faculty of Engineering, Cairo University";
-education["degree"] = "Bachelor Degree";
-education["years"] = "5 years";
-education["city"] = "Giza, Egypt";
-education["major"] = "Computer Engineering";
+var education = {
+    "school": "Faculty of Engineering, Cairo University",
+    "degree": "BA",
+    "years": "5 years",
+    "city": "Giza, Egypt",
+    "major": "Computer Engineering"
+};
 
 var dataReplace = "%data%";
 $("#header").prepend(HTMLheaderRole.replace(dataReplace, bio.role));
