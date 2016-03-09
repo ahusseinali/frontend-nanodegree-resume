@@ -97,7 +97,6 @@ https://developers.google.com/maps/documentation/javascript/reference
 */
 var map;    // declares a global map variable
 
-
 /*
 Start here! initializeMap() is called when page is loaded.
 */
@@ -115,6 +114,12 @@ function initMap() {
   */
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
+  // infoWindows are the little helper windows that open when you click
+  // or hover over a pin on a map. They usually contain more information
+  // about a location.
+  var infoWindow = new google.maps.InfoWindow({
+    content: ''
+  });
 
   /*
   locationFinder() returns an array of every location string from the JSONs
@@ -167,16 +172,10 @@ function initMap() {
       title: name
     });
 
-    // infoWindows are the little helper windows that open when you click
-    // or hover over a pin on a map. They usually contain more information
-    // about a location.
-    var infoWindow = new google.maps.InfoWindow({
-      content: name
-    });
-
-    // hmmmm, I wonder what this is about...
+    // Only one infobox is created. We have to its content everytime a marker is clicked.
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+      infoWindow.setContent(this.title);
+      infoWindow.open(map, this);
     });
 
     // this is where the pin actually gets added to the map.
