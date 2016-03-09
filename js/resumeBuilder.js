@@ -90,15 +90,7 @@ if(bio.hasOwnProperty('skills')) {
     });
 }
 
-$('#workExperience').append(HTMLworkStart);
-work.forEach(function(workObj) {
-    var htmlWorkSelector = $('.work-entry').last();
-    htmlWorkSelector.append(HTMLworkEmployer.replace(dataReplace, workObj.employer) +
-        HTMLworkTitle.replace(dataReplace, workObj.position));
-    htmlWorkSelector.append(HTMLworkDates.replace(dataReplace, workObj.years));
-    htmlWorkSelector.append(HTMLworkLocation.replace(dataReplace, workObj.city));
-    htmlWorkSelector.append(HTMLworkDescription.replace(dataReplace, workObj.description));
-});
+displayWork(work);
 
 $('#education').append(HTMLschoolStart);
 var htmlSchoolSelector = $('.education-entry').last();
@@ -107,3 +99,19 @@ htmlSchoolSelector.append(HTMLschoolName.replace(dataReplace, education.schools[
 htmlSchoolSelector.append(HTMLschoolDates.replace(dataReplace, education.schools[0].years));
 htmlSchoolSelector.append(HTMLschoolLocation.replace(dataReplace, education.schools[0].city));
 htmlSchoolSelector.append(HTMLschoolMajor.replace(dataReplace, education.schools[0].major));
+
+function displayWork(workObj) {
+    if(workObj === null || typeof(workObj) === 'undefined') {
+        // Do nothing as no valid work object exists.
+        return;
+    }
+    $('#workExperience').append(HTMLworkStart);
+    workObj.forEach(function(workEntry) {
+        var htmlWorkSelector = $('.work-entry').last();
+        htmlWorkSelector.append(HTMLworkEmployer.replace(dataReplace, workEntry.employer) +
+            HTMLworkTitle.replace(dataReplace, workEntry.position));
+        htmlWorkSelector.append(HTMLworkDates.replace(dataReplace, workEntry.years));
+        htmlWorkSelector.append(HTMLworkLocation.replace(dataReplace, workEntry.city));
+        htmlWorkSelector.append(HTMLworkDescription.replace(dataReplace, workEntry.description));
+    });
+}
