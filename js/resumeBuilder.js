@@ -36,9 +36,9 @@ var bio = {
 
 var work = {
     'jobs': [{
-        'position': 'Software Engineer',
+        'title': 'Software Engineer',
         'employer': 'Microsoft Corp.',
-        'years': 'October 2013 - present',
+        'dates': 'October 2013 - present',
         'location': 'Redmond, WA, USA',
         'description': 'I am a Software Engineer at Microsoft. I work on the services side in ' +
             'Bing Online Advertising. I am responsible for improving and maintaining offline pipeline ' +
@@ -47,9 +47,9 @@ var work = {
             'and tools to handle Big Data management and job scheduling. I work on performance, ' +
             'scale and validation problems to maintain SLA with the increasing scale of data.'
     },{
-        'position': 'Software Development Contestant',
+        'title': 'Software Development Contestant',
         'employer': 'Freelance at TopCoder (http://www.topcoder.com)',
-        'years': 'April 2012 - September 2013',
+        'dates': 'April 2012 - September 2013',
         'location': 'Ismailia, Egypt',
         'description': 'I participated and won at several development contests that were held by ' +
             'TopCoder community. My Profile (https://www.topcoder.com/members/DrAhmed) has a detailed ' +
@@ -57,9 +57,9 @@ var work = {
             'Html, jQuery, IBM Lotus Notes, MS Access 2007 with VBA, SQL Server 2008 and Linux Shell script ' +
             'in most of the contests.'
     },{
-        'position': 'Teaching Assistant',
+        'title': 'Teaching Assistant',
         'employer': 'Faculty of Engineering, Cairo University',
-        'years': 'March 2011 - September 2013',
+        'dates': 'March 2011 - September 2013',
         'location': 'Giza, Egypt',
         'description': 'I Worked as a teaching assistant giving lab sessions and tutorials in ' +
             'some computer science concepts such as Fundamentals of operating systems, ' +
@@ -71,8 +71,8 @@ var work = {
         this.jobs.forEach(function(work) {
             var workEntry = $('.work-entry').last();
             workEntry.append(HTMLworkEmployer.replace(dataTemplate, work.employer) +
-                HTMLworkTitle.replace(dataTemplate, work.position));
-            workEntry.append(HTMLworkDates.replace(dataTemplate, work.years));
+                HTMLworkTitle.replace(dataTemplate, work.title));
+            workEntry.append(HTMLworkDates.replace(dataTemplate, work.dates));
             workEntry.append(HTMLworkLocation.replace(dataTemplate, work.location));
             workEntry.append(HTMLworkDescription.replace(dataTemplate, work.description));
         });
