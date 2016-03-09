@@ -74,11 +74,11 @@ var projects = [{
     'image': 'https://pbs.twimg.com/profile_images/620570299772186624/0iYMfE43_400x400.png'
 }]
 
-var dataReplace = '%data%';
+var dataTemplate = '%data%';
 
-displayBio(bio, dataReplace);
-displayWork(work, dataReplace);
-displayEducation(education, dataReplace);
+displayBio(bio, dataTemplate);
+displayWork(work, dataTemplate);
+displayEducation(education, dataTemplate);
 
 $('#main').append(internationalizeButton);
 $('#internationalize').click(inName);
