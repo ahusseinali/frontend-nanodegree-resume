@@ -127,7 +127,7 @@ function displayEducation(educationObj, dataReplace) {
 }
 
 function inName() {
-    var cur = $('#name').text();
+    var cur = $('#name').text().trim();
     var tokens = cur.split(' ');
     tokens[0] = tokens[0][0] + tokens[0].slice(1);
     tokens[1] = tokens[1].toUpperCase();
