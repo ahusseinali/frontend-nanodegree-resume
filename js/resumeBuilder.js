@@ -17,29 +17,30 @@ var bio = {
 var work = {
     "position": "Software Engineer",
     "employer": "Microsoft Corp.",
-    "years": "2.5 years",
-    "city": "Redmond, WA, USA"
+    "years": "October 2013 - present",
+    "city": "Redmond, WA, USA",
+    "description": "I am a Software Engineer at Microsoft. I work on the services side in Bing Online Advertising"
 };
 
 var education = {
     "schools": [{
         "school": "Faculty of Engineering, Cairo University",
         "degree": "BA",
-        "years": "5 years",
+        "years": "September 2005 - July 2010",
         "city": "Giza, Egypt",
         "major": "Computer Engineering"
     }],
     "onlineCourses": [{
         "title": "Front-End Web Developer Nanodegree",
         "school": "Udacity",
-        "dates": 2016,
+        "dates": "February 2016",
         "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
     }]
 };
 
 var projects = [{
     "title": "Microsoft GigJam",
-    "dates": "Novemer 2014 to September 2015"
+    "dates": "Novemer 2014 to September 2015",
     "description": "Microsoft GigJam is a cross platform app that improves the sharing experience.\n" +
         "The app has gadgets that you can add, edit and share with others in an online session or " +
         "in an offline mode. Editing the gadgets can be collaborative. That means changes appear " +
@@ -58,8 +59,10 @@ $("#topContacts").append(HTMLemail.replace(dataReplace, bio.contactInfo.gmail));
 $("#topContacts").append(HTMLemail.replace(dataReplace, bio.contactInfo.hotmail));
 $("#topContacts").append(HTMLgithub.replace(dataReplace, bio.contactInfo.github));
 $("#header").append(HTMLwelcomeMsg.replace(dataReplace, bio.welcomeMessage));
-$("#header").append(HTMLskillsStart);
-$("#skills").append(HTMLskills.replace(dataReplace, bio.skills.join(", ")));
+if(bio.hasOwnProperty("skills")) {
+    $("#header").append(HTMLskillsStart);
+    $("#skills").append(HTMLskills.replace(dataReplace, bio.skills.join(", ")));
+}
 
 $("#workExperience").append(HTMLworkStart);
 var htmlWorkSelector = $(".work-entry").last();
