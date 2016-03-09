@@ -10,7 +10,7 @@ var bio = {
         'mobile': '+1(425)615-5422',
         'location': 'Redmond, WA, USA'
     },
-    'pictureUrl': 'https://avatars0.githubusercontent.com/u/9116873?v=3&s=460',
+    'pictureUrl': 'images/ahmed.jpg',
     'welcomeMessage': 'Welcome to my personal resume page.',
     'skills': ['Software Development', 'Software Design', 'Web Development',
         'RESTful services', '.NET', 'Java', 'HTML', 'CSS', 'JavaScript',
@@ -130,7 +130,7 @@ var projects = {
             'in real time at all the session users screen.\nEven better, GigJam allows cutomized sharing of' +
             'gadgets for different users. That means every session can contain different gadgets and they can all ' +
             'be open simultaneously.\nThis tremendously improves business productivity.',
-        'image': 'https://pbs.twimg.com/profile_images/620570299772186624/0iYMfE43_400x400.png'
+        'image': 'images/gigjam.png'
     }],
     'display': function() {
         this.data.forEach(function(project) {
