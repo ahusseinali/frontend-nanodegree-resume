@@ -4,25 +4,25 @@ var bio = {
     'name': 'Ahmed Ali',
     'role': 'Software Engineer',
     'contacts': {
-        'gmail': 'a.husseinzaki@gmail.com',
-        'hotmail': 'a.husseinzaki@hotmail.com',
-        'github': 'https://github.com/ahusseinali',
         'mobile': '+1(425)615-5422',
+        'email': 'a.husseinzaki@gmail.com',
+        'github': 'https://github.com/ahusseinali',
+        'twitter': '@ahusseinzaki',
         'location': 'Redmond, WA, USA'
     },
-    'pictureUrl': 'images/ahmed.jpg',
     'welcomeMessage': 'Welcome to my personal resume page.',
     'skills': ['Software Development', 'Software Design', 'Web Development',
         'RESTful services', '.NET', 'Java', 'HTML', 'CSS', 'JavaScript',
         'Bootstrap', 'KnockoutJS'],
+    'biopic': 'images/ahmed.jpg',
     'display': function() {
         $('#header').prepend(HTMLheaderRole.replace(dataTemplate, this.role));
         $('#header').prepend(HTMLheaderName.replace(dataTemplate, this.name));
-        $('#header').append(HTMLbioPic.replace(dataTemplate, this.pictureUrl));
+        $('#header').append(HTMLbioPic.replace(dataTemplate, this.biopic));
         $('#topContacts').append(HTMLmobile.replace(dataTemplate, this.contacts.mobile));
-        $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contacts.gmail));
-        $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contacts.hotmail));
+        $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contacts.email));
         $('#topContacts').append(HTMLgithub.replace(dataTemplate, this.contacts.github));
+        $('#topContacts').append(HTMLtwitter.replace(dataTemplate, this.contacts.twitter));
         $('#topContacts').append(HTMLlocation.replace(dataTemplate, this.contacts.location));
         $('#header').append(HTMLwelcomeMsg.replace(dataTemplate, this.welcomeMessage));
         if(this.hasOwnProperty('skills')) {
