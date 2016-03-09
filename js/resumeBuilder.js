@@ -75,26 +75,30 @@ var projects = [{
 }]
 
 var dataReplace = '%data%';
-$('#header').prepend(HTMLheaderRole.replace(dataReplace, bio.role));
-$('#header').prepend(HTMLheaderName.replace(dataReplace, bio.name));
-$('#header').append(HTMLbioPic.replace(dataReplace, bio.pictureUrl));
-$('#topContacts').append(HTMLmobile.replace(dataReplace, bio.contactInfo.mobile));
-$('#topContacts').append(HTMLemail.replace(dataReplace, bio.contactInfo.gmail));
-$('#topContacts').append(HTMLemail.replace(dataReplace, bio.contactInfo.hotmail));
-$('#topContacts').append(HTMLgithub.replace(dataReplace, bio.contactInfo.github));
-$('#header').append(HTMLwelcomeMsg.replace(dataReplace, bio.welcomeMessage));
-if(bio.hasOwnProperty('skills')) {
-    $('#header').append(HTMLskillsStart);
-    bio.skills.forEach(function(skill) {
-        $('#skills').append(HTMLskills.replace(dataReplace, skill));
-    });
-}
 
+displayBio(bio);
 displayWork(work);
 displayEducation(education);
 
 $('#main').append(internationalizeButton);
 $('#internationalize').click(inName);
+
+function displayBio(bioObj) {
+    $('#header').prepend(HTMLheaderRole.replace(dataReplace, bioObj.role));
+    $('#header').prepend(HTMLheaderName.replace(dataReplace, bioObj.name));
+    $('#header').append(HTMLbioPic.replace(dataReplace, bioObj.pictureUrl));
+    $('#topContacts').append(HTMLmobile.replace(dataReplace, bioObj.contactInfo.mobile));
+    $('#topContacts').append(HTMLemail.replace(dataReplace, bioObj.contactInfo.gmail));
+    $('#topContacts').append(HTMLemail.replace(dataReplace, bioObj.contactInfo.hotmail));
+    $('#topContacts').append(HTMLgithub.replace(dataReplace, bioObj.contactInfo.github));
+    $('#header').append(HTMLwelcomeMsg.replace(dataReplace, bioObj.welcomeMessage));
+    if(bioObj.hasOwnProperty('skills')) {
+        $('#header').append(HTMLskillsStart);
+        bioObj.skills.forEach(function(skill) {
+            $('#skills').append(HTMLskills.replace(dataReplace, skill));
+        });
+    }
+}
 
 function displayWork(workObj) {
     if(workObj === null || typeof(workObj) === 'undefined') {
