@@ -85,7 +85,7 @@ var education = {
         'degree': 'BA',
         'dates': 'September 2005 - July 2010',
         'location': 'Giza, Egypt',
-        'majors': 'Computer Engineering',   // TODO: Make it array
+        'majors': ['Computer Engineering'],
         'url': 'http://eng.cu.edu.eg/en/'
     }],
     'onlineCourses': [{
@@ -103,7 +103,9 @@ var education = {
                     HTMLschoolDegree.replace(dataTemplate, school.degree));
                 entrySelector.append(HTMLschoolDates.replace(dataTemplate, school.dates));
                 entrySelector.append(HTMLschoolLocation.replace(dataTemplate, school.location));
-                entrySelector.append(HTMLschoolMajor.replace(dataTemplate, school.majors));
+                school.majors.forEach(function(major) {
+                    entrySelector.append(HTMLschoolMajor.replace(dataTemplate, major));
+                });
             });
         }
 
