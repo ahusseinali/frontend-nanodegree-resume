@@ -52,34 +52,71 @@ var education = {
         'degree': 'BA',
         'years': 'September 2005 - July 2010',
         'city': 'Giza, Egypt',
-        'major': 'Computer Engineering'
+        'major': 'Computer Engineering',
     }],
     'onlineCourses': [{
         'title': 'Front-End Web Developer Nanodegree',
         'school': 'Udacity',
         'dates': 'February 2016',
         'url': 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001'
-    }]
+    }],
+    'display': function() {
+        if(this.schools) {
+            this.schools.forEach(function(school) {
+                $('#education').append(HTMLschoolStart);
+                var entrySelector = $('.education-entry').last();
+                entrySelector.append(HTMLschoolName.replace(dataTemplate, school.school) +
+                    HTMLschoolDegree.replace(dataTemplate, school.degree));
+                entrySelector.append(HTMLschoolDates.replace(dataTemplate, school.years));
+                entrySelector.append(HTMLschoolLocation.replace(dataTemplate, school.city));
+                entrySelector.append(HTMLschoolMajor.replace(dataTemplate, school.major));
+            });
+        }
+
+        if(this.onlineCourses) {
+            $('#education').append(HTMLonlineClasses);
+            this.onlineCourses.forEach(function(course){
+                $('#education').append(HTMLschoolStart);
+                var entrySelector = $('.education-entry').last();
+                entrySelector.append(HTMLonlineTitle.replace(dataTemplate, course.title) +
+                    HTMLonlineSchool.replace(dataTemplate, course.school));
+                entrySelector.append(HTMLonlineDates.replace(dataTemplate, course.dates));
+                entrySelector.append(HTMLonlineURL.replace(dataTemplate, course.url));
+            });
+        }
+    }
 };
 
-var projects = [{
-    'title': 'Microsoft GigJam',
-    'dates': 'Novemer 2014 to September 2015',
-    'description': 'Microsoft GigJam is a cross platform app that improves the sharing experience.\n' +
-        'The app has gadgets that you can add, edit and share with others in an online session or ' +
-        'in an offline mode. Editing the gadgets can be collaborative. That means changes appear ' +
-        'in real time at all the session users screen.\nEven better, GigJam allows cutomized sharing of' +
-        'gadgets for different users. That means every session can contain different gadgets and they can all ' +
-        'be open simultaneously.\nThis tremendously improves business productivity.',
-    'image': 'https://pbs.twimg.com/profile_images/620570299772186624/0iYMfE43_400x400.png'
-}]
+var projects = {
+    'data': [{
+        'title': 'Microsoft GigJam',
+        'dates': 'Novemer 2014 to September 2015',
+        'description': 'Microsoft GigJam is a cross platform app that improves the sharing experience.\n' +
+            'The app has gadgets that you can add, edit and share with others in an online session or ' +
+            'in an offline mode. Editing the gadgets can be collaborative. That means changes appear ' +
+            'in real time at all the session users screen.\nEven better, GigJam allows cutomized sharing of' +
+            'gadgets for different users. That means every session can contain different gadgets and they can all ' +
+            'be open simultaneously.\nThis tremendously improves business productivity.',
+        'image': 'https://pbs.twimg.com/profile_images/620570299772186624/0iYMfE43_400x400.png'
+    }],
+    'display': function() {
+        this.data.forEach(function(project) {
+            $('#projects').append(HTMLprojectStart);
+            var entrySelector = $('.project-entry').last();
+            entrySelector.append(HTMLprojectTitle.replace(dataTemplate, project.title));
+            entrySelector.append(HTMLprojectDates.replace(dataTemplate, project.dates));
+            entrySelector.append(HTMLprojectDescription.replace(dataTemplate, project.description));
+            entrySelector.append(HTMLprojectImage.replace(dataTemplate, project.image));
+        });
+    }
+}
 
 var dataTemplate = '%data%';
 
 displayBio(bio, dataTemplate);
 displayWork(work, dataTemplate);
-displayEducation(education, dataTemplate);
-
+education.display();
+projects.display();
 $('#main').append(internationalizeButton);
 $('#internationalize').click(inName);
 
@@ -117,13 +154,7 @@ function displayWork(workObj, dataReplace) {
 }
 
 function displayEducation(educationObj, dataReplace) {
-    $('#education').append(HTMLschoolStart);
-    var htmlSchoolSelector = $('.education-entry').last();
-    htmlSchoolSelector.append(HTMLschoolName.replace(dataReplace, educationObj.schools[0].school) +
-        HTMLschoolDegree.replace(dataReplace, educationObj.schools[0].degree));
-    htmlSchoolSelector.append(HTMLschoolDates.replace(dataReplace, educationObj.schools[0].years));
-    htmlSchoolSelector.append(HTMLschoolLocation.replace(dataReplace, educationObj.schools[0].city));
-    htmlSchoolSelector.append(HTMLschoolMajor.replace(dataReplace, educationObj.schools[0].major));
+
 }
 
 function inName() {
