@@ -19,7 +19,12 @@ var work = {
     "employer": "Microsoft Corp.",
     "years": "October 2013 - present",
     "city": "Redmond, WA, USA",
-    "description": "I am a Software Engineer at Microsoft. I work on the services side in Bing Online Advertising"
+    "description": "I am a Software Engineer at Microsoft. I work on the services side in " +
+        "Bing Online Advertising. I'm responsible for improving and maintaining offline pipeline " +
+        "services that extract features from raw BI logs to help with predicting click probability " +
+        "on user queries. My role extensively uses .Net framework along with internal frameworks " +
+        "and tools to handle Big Data management and job scheduling. I work on performance, " +
+        "scale and validation problems to maintain SLA with the increasing scale of data"
 };
 
 var education = {
@@ -70,6 +75,7 @@ htmlWorkSelector.append(HTMLworkEmployer.replace(dataReplace, work.employer) +
     HTMLworkTitle.replace(dataReplace, work.position));
 htmlWorkSelector.append(HTMLworkDates.replace(dataReplace, work.years));
 htmlWorkSelector.append(HTMLworkLocation.replace(dataReplace, work.city));
+htmlWorkSelector.append(HTMLworkDescription.replace(dataReplace, work.description));
 
 $("#education").append(HTMLschoolStart);
 var htmlSchoolSelector = $(".education-entry").last();
