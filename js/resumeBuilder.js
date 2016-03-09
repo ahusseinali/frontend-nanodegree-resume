@@ -14,37 +14,50 @@ var bio = {
         'Bootstrap', 'KnockoutJS']
 };
 
-var work = [{
-    'position': 'Software Engineer',
-    'employer': 'Microsoft Corp.',
-    'years': 'October 2013 - present',
-    'city': 'Redmond, WA, USA',
-    'description': 'I am a Software Engineer at Microsoft. I work on the services side in ' +
-        'Bing Online Advertising. I am responsible for improving and maintaining offline pipeline ' +
-        'services that extract features from raw BI logs to help with predicting click probability ' +
-        'on user queries. My role extensively uses .Net framework along with internal frameworks ' +
-        'and tools to handle Big Data management and job scheduling. I work on performance, ' +
-        'scale and validation problems to maintain SLA with the increasing scale of data.'
-},{
-    'position': 'Software Development Contestant',
-    'employer': 'Freelance at TopCoder (http://www.topcoder.com)',
-    'years': 'April 2012 - September 2013',
-    'city': 'Home Office',
-    'description': 'I participated and won at several development contests that were held by ' +
-        'TopCoder community. My Profile (https://www.topcoder.com/members/DrAhmed) has a detailed ' +
-        'description of all the projects I participated in. I used ASP.NET MVC 3.0, C#.NET 4.0, WCF, ' +
-        'Html, jQuery, IBM Lotus Notes, MS Access 2007 with VBA, SQL Server 2008 and Linux Shell script ' +
-        'in most of the contests.'
-},{
-    'position': 'Teaching Assistant',
-    'employer': 'Faculty of Engineering, Cairo University',
-    'years': 'March 2011 - September 2013',
-    'city': 'Giza, Egypt',
-    'description': 'I Worked as a teaching assistant giving lab sessions and tutorials in ' +
-        'some computer science concepts such as Fundamentals of operating systems, ' +
-        'Distributed Operating Systems, Logic Design, Computer Networks, Computer Graphics ' +
-        'and Database Administration'
-}];
+var work = {
+    'data': [{
+        'position': 'Software Engineer',
+        'employer': 'Microsoft Corp.',
+        'years': 'October 2013 - present',
+        'city': 'Redmond, WA, USA',
+        'description': 'I am a Software Engineer at Microsoft. I work on the services side in ' +
+            'Bing Online Advertising. I am responsible for improving and maintaining offline pipeline ' +
+            'services that extract features from raw BI logs to help with predicting click probability ' +
+            'on user queries. My role extensively uses .Net framework along with internal frameworks ' +
+            'and tools to handle Big Data management and job scheduling. I work on performance, ' +
+            'scale and validation problems to maintain SLA with the increasing scale of data.'
+    },{
+        'position': 'Software Development Contestant',
+        'employer': 'Freelance at TopCoder (http://www.topcoder.com)',
+        'years': 'April 2012 - September 2013',
+        'city': 'Home Office',
+        'description': 'I participated and won at several development contests that were held by ' +
+            'TopCoder community. My Profile (https://www.topcoder.com/members/DrAhmed) has a detailed ' +
+            'description of all the projects I participated in. I used ASP.NET MVC 3.0, C#.NET 4.0, WCF, ' +
+            'Html, jQuery, IBM Lotus Notes, MS Access 2007 with VBA, SQL Server 2008 and Linux Shell script ' +
+            'in most of the contests.'
+    },{
+        'position': 'Teaching Assistant',
+        'employer': 'Faculty of Engineering, Cairo University',
+        'years': 'March 2011 - September 2013',
+        'city': 'Giza, Egypt',
+        'description': 'I Worked as a teaching assistant giving lab sessions and tutorials in ' +
+            'some computer science concepts such as Fundamentals of operating systems, ' +
+            'Distributed Operating Systems, Logic Design, Computer Networks, Computer Graphics ' +
+            'and Database Administration'
+    }],
+    'display': function() {
+        $('#workExperience').append(HTMLworkStart);
+        this.data.forEach(function(work) {
+            var workEntry = $('.work-entry').last();
+            workEntry.append(HTMLworkEmployer.replace(dataTemplate, work.employer) +
+                HTMLworkTitle.replace(dataTemplate, work.position));
+            workEntry.append(HTMLworkDates.replace(dataTemplate, work.years));
+            workEntry.append(HTMLworkLocation.replace(dataTemplate, work.city));
+            workEntry.append(HTMLworkDescription.replace(dataTemplate, work.description));
+        });
+    }
+};
 
 var education = {
     'schools': [{
@@ -114,7 +127,7 @@ var projects = {
 var dataTemplate = '%data%';
 
 displayBio(bio, dataTemplate);
-displayWork(work, dataTemplate);
+work.display();
 education.display();
 projects.display();
 $('#main').append(internationalizeButton);
@@ -135,26 +148,6 @@ function displayBio(bioObj, dataReplace) {
             $('#skills').append(HTMLskills.replace(dataReplace, skill));
         });
     }
-}
-
-function displayWork(workObj, dataReplace) {
-    if(workObj === null || typeof(workObj) === 'undefined') {
-        // Do nothing as no valid work object exists.
-        return;
-    }
-    $('#workExperience').append(HTMLworkStart);
-    workObj.forEach(function(workEntry) {
-        var htmlWorkSelector = $('.work-entry').last();
-        htmlWorkSelector.append(HTMLworkEmployer.replace(dataReplace, workEntry.employer) +
-            HTMLworkTitle.replace(dataReplace, workEntry.position));
-        htmlWorkSelector.append(HTMLworkDates.replace(dataReplace, workEntry.years));
-        htmlWorkSelector.append(HTMLworkLocation.replace(dataReplace, workEntry.city));
-        htmlWorkSelector.append(HTMLworkDescription.replace(dataReplace, workEntry.description));
-    });
-}
-
-function displayEducation(educationObj, dataReplace) {
-
 }
 
 function inName() {
