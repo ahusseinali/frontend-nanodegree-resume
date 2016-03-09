@@ -77,7 +77,7 @@ var projects = [{
 var dataReplace = '%data%';
 $('#header').prepend(HTMLheaderRole.replace(dataReplace, bio.role));
 $('#header').prepend(HTMLheaderName.replace(dataReplace, bio.name));
-$('#header').prepend(HTMLbioPic.replace(dataReplace, bio.pictureUrl));
+$('#header').append(HTMLbioPic.replace(dataReplace, bio.pictureUrl));
 $('#topContacts').append(HTMLmobile.replace(dataReplace, bio.contactInfo.mobile));
 $('#topContacts').append(HTMLemail.replace(dataReplace, bio.contactInfo.gmail));
 $('#topContacts').append(HTMLemail.replace(dataReplace, bio.contactInfo.hotmail));
@@ -91,6 +91,8 @@ if(bio.hasOwnProperty('skills')) {
 }
 
 displayWork(work);
+$('#main').append(internationalizeButton);
+$('#internationalize').click(inName);
 
 $('#education').append(HTMLschoolStart);
 var htmlSchoolSelector = $('.education-entry').last();
@@ -99,6 +101,8 @@ htmlSchoolSelector.append(HTMLschoolName.replace(dataReplace, education.schools[
 htmlSchoolSelector.append(HTMLschoolDates.replace(dataReplace, education.schools[0].years));
 htmlSchoolSelector.append(HTMLschoolLocation.replace(dataReplace, education.schools[0].city));
 htmlSchoolSelector.append(HTMLschoolMajor.replace(dataReplace, education.schools[0].major));
+
+$('#internationalize').click(inName);
 
 function displayWork(workObj) {
     if(workObj === null || typeof(workObj) === 'undefined') {
@@ -114,4 +118,13 @@ function displayWork(workObj) {
         htmlWorkSelector.append(HTMLworkLocation.replace(dataReplace, workEntry.city));
         htmlWorkSelector.append(HTMLworkDescription.replace(dataReplace, workEntry.description));
     });
+}
+
+function inName() {
+    var cur = $('#name').text();
+    var tokens = cur.split(' ');
+    tokens[0] = tokens[0][0] + tokens[0].slice(1);
+    tokens[1] = tokens[1].toUpperCase();
+    cur = tokens.join(' ');
+    $('#name').text(cur);
 }
