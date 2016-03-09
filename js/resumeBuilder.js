@@ -102,8 +102,6 @@ htmlSchoolSelector.append(HTMLschoolDates.replace(dataReplace, education.schools
 htmlSchoolSelector.append(HTMLschoolLocation.replace(dataReplace, education.schools[0].city));
 htmlSchoolSelector.append(HTMLschoolMajor.replace(dataReplace, education.schools[0].major));
 
-$('#internationalize').click(inName);
-
 function displayWork(workObj) {
     if(workObj === null || typeof(workObj) === 'undefined') {
         // Do nothing as no valid work object exists.
