@@ -172,6 +172,9 @@ $('#mapDiv').append(googleMap);
 // Display Internationalize button
 $('#header').append(internationalizeButton);
 
+// Internationalizes the name.
+// Makes first name starts with capital letter and the last name all upper case.
+// example: "john smith" becomes "John SMITH"
 function inName() {
     var cur = $('#name').text().trim();
     var tokens = cur.split(' ');
