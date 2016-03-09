@@ -7,7 +7,8 @@ var bio = {
         'gmail': 'a.husseinzaki@gmail.com',
         'hotmail': 'a.husseinzaki@hotmail.com',
         'github': 'https://github.com/ahusseinali',
-        'mobile': '+1(425)615-5422'
+        'mobile': '+1(425)615-5422',
+        'location': 'Redmond, WA, USA'
     },
     'pictureUrl': 'https://avatars0.githubusercontent.com/u/9116873?v=3&s=460',
     'welcomeMessage': 'Welcome to my personal resume page.',
@@ -22,6 +23,7 @@ var bio = {
         $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contactInfo.gmail));
         $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contactInfo.hotmail));
         $('#topContacts').append(HTMLgithub.replace(dataTemplate, this.contactInfo.github));
+        $('#topContacts').append(HTMLlocation.replace(dataTemplate, this.contactInfo.location));
         $('#header').append(HTMLwelcomeMsg.replace(dataTemplate, this.welcomeMessage));
         if(this.hasOwnProperty('skills')) {
             $('#header').append(HTMLskillsStart);
@@ -148,8 +150,9 @@ work.display();
 education.display();
 projects.display();
 
+// Display map
+$('#main').append(googleMap);
 $('#main').append(internationalizeButton);
-$('#internationalize').click(inName);
 
 function inName() {
     var cur = $('#name').text().trim();
