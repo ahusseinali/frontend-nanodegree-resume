@@ -73,7 +73,7 @@ var work = {
             workEntry.append(HTMLworkEmployer.replace(dataTemplate, work.employer) +
                 HTMLworkTitle.replace(dataTemplate, work.position));
             workEntry.append(HTMLworkDates.replace(dataTemplate, work.years));
-            workEntry.append(HTMLworkLocation.replace(dataTemplate, work.city));
+            workEntry.append(HTMLworkLocation.replace(dataTemplate, work.location));
             workEntry.append(HTMLworkDescription.replace(dataTemplate, work.description));
         });
     }
