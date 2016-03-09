@@ -1,3 +1,5 @@
+var dataTemplate = '%data%';
+
 var bio = {
     'name': 'Ahmed Ali',
     'role': 'Software Engineer',
@@ -11,7 +13,23 @@ var bio = {
     'welcomeMessage': 'Welcome to my personal resume page.',
     'skills': ['Software Development', 'Software Design', 'Web Development',
         'RESTful services', '.NET', 'Java', 'HTML', 'CSS', 'JavaScript',
-        'Bootstrap', 'KnockoutJS']
+        'Bootstrap', 'KnockoutJS'],
+    'display': function() {
+        $('#header').prepend(HTMLheaderRole.replace(dataTemplate, this.role));
+        $('#header').prepend(HTMLheaderName.replace(dataTemplate, this.name));
+        $('#header').append(HTMLbioPic.replace(dataTemplate, this.pictureUrl));
+        $('#topContacts').append(HTMLmobile.replace(dataTemplate, this.contactInfo.mobile));
+        $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contactInfo.gmail));
+        $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contactInfo.hotmail));
+        $('#topContacts').append(HTMLgithub.replace(dataTemplate, this.contactInfo.github));
+        $('#header').append(HTMLwelcomeMsg.replace(dataTemplate, this.welcomeMessage));
+        if(this.hasOwnProperty('skills')) {
+            $('#header').append(HTMLskillsStart);
+            this.skills.forEach(function(skill) {
+                $('#skills').append(HTMLskills.replace(dataTemplate, skill));
+            });
+        }
+    }
 };
 
 var work = {
@@ -124,31 +142,14 @@ var projects = {
     }
 }
 
-var dataTemplate = '%data%';
-
-displayBio(bio, dataTemplate);
+// Display all resume sections
+bio.display();
 work.display();
 education.display();
 projects.display();
+
 $('#main').append(internationalizeButton);
 $('#internationalize').click(inName);
-
-function displayBio(bioObj, dataReplace) {
-    $('#header').prepend(HTMLheaderRole.replace(dataReplace, bioObj.role));
-    $('#header').prepend(HTMLheaderName.replace(dataReplace, bioObj.name));
-    $('#header').append(HTMLbioPic.replace(dataReplace, bioObj.pictureUrl));
-    $('#topContacts').append(HTMLmobile.replace(dataReplace, bioObj.contactInfo.mobile));
-    $('#topContacts').append(HTMLemail.replace(dataReplace, bioObj.contactInfo.gmail));
-    $('#topContacts').append(HTMLemail.replace(dataReplace, bioObj.contactInfo.hotmail));
-    $('#topContacts').append(HTMLgithub.replace(dataReplace, bioObj.contactInfo.github));
-    $('#header').append(HTMLwelcomeMsg.replace(dataReplace, bioObj.welcomeMessage));
-    if(bioObj.hasOwnProperty('skills')) {
-        $('#header').append(HTMLskillsStart);
-        bioObj.skills.forEach(function(skill) {
-            $('#skills').append(HTMLskills.replace(dataReplace, skill));
-        });
-    }
-}
 
 function inName() {
     var cur = $('#name').text().trim();
