@@ -16,15 +16,20 @@ var bio = {
         'Bootstrap', 'KnockoutJS'],
     'biopic': 'images/ahmed.jpg',
     'display': function() {
+        // Add header information
         $('#header').prepend(HTMLheaderRole.replace(dataTemplate, this.role));
         $('#header').prepend(HTMLheaderName.replace(dataTemplate, this.name));
         $('#header').append(HTMLbioPic.replace(dataTemplate, this.biopic));
         $('#header').append(HTMLwelcomeMsg.replace(dataTemplate, this.welcomeMessage));
+
+        // Add top contacts
         $('#topContacts').append(HTMLmobile.replace(dataTemplate, this.contacts.mobile));
         $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contacts.email));
         $('#topContacts').append(HTMLgithub.replace(dataTemplate, this.contacts.github));
         $('#topContacts').append(HTMLtwitter.replace(dataTemplate, this.contacts.twitter));
         $('#topContacts').append(HTMLlocation.replace(dataTemplate, this.contacts.location));
+
+        // Add skills
         if(this.hasOwnProperty('skills')) {
             $('#header').append(HTMLskillsStart);
             this.skills.forEach(function(skill) {
@@ -32,6 +37,7 @@ var bio = {
             });
         }
 
+        // Add footer contacts
         $('#footerContacts').append(HTMLmobile.replace(dataTemplate, this.contacts.mobile));
         $('#footerContacts').append(HTMLemail.replace(dataTemplate, this.contacts.email));
         $('#footerContacts').append(HTMLgithub.replace(dataTemplate, this.contacts.github));
