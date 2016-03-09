@@ -76,14 +76,14 @@ var projects = [{
 
 var dataReplace = '%data%';
 
-displayBio(bio);
-displayWork(work);
-displayEducation(education);
+displayBio(bio, dataReplace);
+displayWork(work, dataReplace);
+displayEducation(education, dataReplace);
 
 $('#main').append(internationalizeButton);
 $('#internationalize').click(inName);
 
-function displayBio(bioObj) {
+function displayBio(bioObj, dataReplace) {
     $('#header').prepend(HTMLheaderRole.replace(dataReplace, bioObj.role));
     $('#header').prepend(HTMLheaderName.replace(dataReplace, bioObj.name));
     $('#header').append(HTMLbioPic.replace(dataReplace, bioObj.pictureUrl));
@@ -100,7 +100,7 @@ function displayBio(bioObj) {
     }
 }
 
-function displayWork(workObj) {
+function displayWork(workObj, dataReplace) {
     if(workObj === null || typeof(workObj) === 'undefined') {
         // Do nothing as no valid work object exists.
         return;
@@ -116,7 +116,7 @@ function displayWork(workObj) {
     });
 }
 
-function displayEducation(educationObj) {
+function displayEducation(educationObj, dataReplace) {
     $('#education').append(HTMLschoolStart);
     var htmlSchoolSelector = $('.education-entry').last();
     htmlSchoolSelector.append(HTMLschoolName.replace(dataReplace, educationObj.schools[0].school) +
