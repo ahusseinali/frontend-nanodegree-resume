@@ -85,7 +85,9 @@ $('#topContacts').append(HTMLgithub.replace(dataReplace, bio.contactInfo.github)
 $('#header').append(HTMLwelcomeMsg.replace(dataReplace, bio.welcomeMessage));
 if(bio.hasOwnProperty('skills')) {
     $('#header').append(HTMLskillsStart);
-    $('#skills').append(HTMLskills.replace(dataReplace, bio.skills.join(', ')));
+    bio.skills.forEach(function(skill) {
+        $('#skills').append(HTMLskills.replace(dataReplace, skill));
+    });
 }
 
 $('#workExperience').append(HTMLworkStart);
