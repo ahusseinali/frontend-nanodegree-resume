@@ -3,7 +3,7 @@ var dataTemplate = '%data%';
 var bio = {
     'name': 'Ahmed Ali',
     'role': 'Software Engineer',
-    'contactInfo': {
+    'contacts': {
         'gmail': 'a.husseinzaki@gmail.com',
         'hotmail': 'a.husseinzaki@hotmail.com',
         'github': 'https://github.com/ahusseinali',
@@ -19,11 +19,11 @@ var bio = {
         $('#header').prepend(HTMLheaderRole.replace(dataTemplate, this.role));
         $('#header').prepend(HTMLheaderName.replace(dataTemplate, this.name));
         $('#header').append(HTMLbioPic.replace(dataTemplate, this.pictureUrl));
-        $('#topContacts').append(HTMLmobile.replace(dataTemplate, this.contactInfo.mobile));
-        $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contactInfo.gmail));
-        $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contactInfo.hotmail));
-        $('#topContacts').append(HTMLgithub.replace(dataTemplate, this.contactInfo.github));
-        $('#topContacts').append(HTMLlocation.replace(dataTemplate, this.contactInfo.location));
+        $('#topContacts').append(HTMLmobile.replace(dataTemplate, this.contacts.mobile));
+        $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contacts.gmail));
+        $('#topContacts').append(HTMLemail.replace(dataTemplate, this.contacts.hotmail));
+        $('#topContacts').append(HTMLgithub.replace(dataTemplate, this.contacts.github));
+        $('#topContacts').append(HTMLlocation.replace(dataTemplate, this.contacts.location));
         $('#header').append(HTMLwelcomeMsg.replace(dataTemplate, this.welcomeMessage));
         if(this.hasOwnProperty('skills')) {
             $('#header').append(HTMLskillsStart);
@@ -35,11 +35,11 @@ var bio = {
 };
 
 var work = {
-    'data': [{
+    'jobs': [{
         'position': 'Software Engineer',
         'employer': 'Microsoft Corp.',
         'years': 'October 2013 - present',
-        'city': 'Redmond, WA, USA',
+        'location': 'Redmond, WA, USA',
         'description': 'I am a Software Engineer at Microsoft. I work on the services side in ' +
             'Bing Online Advertising. I am responsible for improving and maintaining offline pipeline ' +
             'services that extract features from raw BI logs to help with predicting click probability ' +
@@ -50,7 +50,7 @@ var work = {
         'position': 'Software Development Contestant',
         'employer': 'Freelance at TopCoder (http://www.topcoder.com)',
         'years': 'April 2012 - September 2013',
-        'city': 'Home Office',
+        'location': 'Ismailia, Egypt',
         'description': 'I participated and won at several development contests that were held by ' +
             'TopCoder community. My Profile (https://www.topcoder.com/members/DrAhmed) has a detailed ' +
             'description of all the projects I participated in. I used ASP.NET MVC 3.0, C#.NET 4.0, WCF, ' +
@@ -60,7 +60,7 @@ var work = {
         'position': 'Teaching Assistant',
         'employer': 'Faculty of Engineering, Cairo University',
         'years': 'March 2011 - September 2013',
-        'city': 'Giza, Egypt',
+        'location': 'Giza, Egypt',
         'description': 'I Worked as a teaching assistant giving lab sessions and tutorials in ' +
             'some computer science concepts such as Fundamentals of operating systems, ' +
             'Distributed Operating Systems, Logic Design, Computer Networks, Computer Graphics ' +
@@ -68,7 +68,7 @@ var work = {
     }],
     'display': function() {
         $('#workExperience').append(HTMLworkStart);
-        this.data.forEach(function(work) {
+        this.jobs.forEach(function(work) {
             var workEntry = $('.work-entry').last();
             workEntry.append(HTMLworkEmployer.replace(dataTemplate, work.employer) +
                 HTMLworkTitle.replace(dataTemplate, work.position));
@@ -84,7 +84,7 @@ var education = {
         'school': 'Faculty of Engineering, Cairo University',
         'degree': 'BA',
         'years': 'September 2005 - July 2010',
-        'city': 'Giza, Egypt',
+        'location': 'Giza, Egypt',
         'major': 'Computer Engineering',
     }],
     'onlineCourses': [{
@@ -101,7 +101,7 @@ var education = {
                 entrySelector.append(HTMLschoolName.replace(dataTemplate, school.school) +
                     HTMLschoolDegree.replace(dataTemplate, school.degree));
                 entrySelector.append(HTMLschoolDates.replace(dataTemplate, school.years));
-                entrySelector.append(HTMLschoolLocation.replace(dataTemplate, school.city));
+                entrySelector.append(HTMLschoolLocation.replace(dataTemplate, school.location));
                 entrySelector.append(HTMLschoolMajor.replace(dataTemplate, school.major));
             });
         }
@@ -151,7 +151,7 @@ education.display();
 projects.display();
 
 // Display map
-$('#main').append(googleMap);
+$('#mapDiv').append(googleMap);
 $('#main').append(internationalizeButton);
 
 function inName() {
