@@ -91,16 +91,10 @@ if(bio.hasOwnProperty('skills')) {
 }
 
 displayWork(work);
+displayEducation(education);
+
 $('#main').append(internationalizeButton);
 $('#internationalize').click(inName);
-
-$('#education').append(HTMLschoolStart);
-var htmlSchoolSelector = $('.education-entry').last();
-htmlSchoolSelector.append(HTMLschoolName.replace(dataReplace, education.schools[0].school) +
-    HTMLschoolDegree.replace(dataReplace, education.schools[0].degree));
-htmlSchoolSelector.append(HTMLschoolDates.replace(dataReplace, education.schools[0].years));
-htmlSchoolSelector.append(HTMLschoolLocation.replace(dataReplace, education.schools[0].city));
-htmlSchoolSelector.append(HTMLschoolMajor.replace(dataReplace, education.schools[0].major));
 
 function displayWork(workObj) {
     if(workObj === null || typeof(workObj) === 'undefined') {
@@ -116,6 +110,16 @@ function displayWork(workObj) {
         htmlWorkSelector.append(HTMLworkLocation.replace(dataReplace, workEntry.city));
         htmlWorkSelector.append(HTMLworkDescription.replace(dataReplace, workEntry.description));
     });
+}
+
+function displayEducation(educationObj) {
+    $('#education').append(HTMLschoolStart);
+    var htmlSchoolSelector = $('.education-entry').last();
+    htmlSchoolSelector.append(HTMLschoolName.replace(dataReplace, educationObj.schools[0].school) +
+        HTMLschoolDegree.replace(dataReplace, educationObj.schools[0].degree));
+    htmlSchoolSelector.append(HTMLschoolDates.replace(dataReplace, educationObj.schools[0].years));
+    htmlSchoolSelector.append(HTMLschoolLocation.replace(dataReplace, educationObj.schools[0].city));
+    htmlSchoolSelector.append(HTMLschoolMajor.replace(dataReplace, educationObj.schools[0].major));
 }
 
 function inName() {
