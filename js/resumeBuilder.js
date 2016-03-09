@@ -157,7 +157,8 @@ projects.display();
 
 // Display map
 $('#mapDiv').append(googleMap);
-$('#main').append(internationalizeButton);
+// Display Internationalize button
+$('#header').append(internationalizeButton);
 
 function inName() {
     var cur = $('#name').text().trim();
