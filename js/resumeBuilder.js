@@ -133,7 +133,7 @@ var projects = {
             'in real time at all the session users screen.\nEven better, GigJam allows cutomized sharing of' +
             'gadgets for different users. That means every session can contain different gadgets and they can all ' +
             'be open simultaneously.\nThis tremendously improves business productivity.',
-        'image': 'images/gigjam.png'
+        'images': ['images/gigjam.png']
     }],
     'display': function() {
         this.data.forEach(function(project) {
@@ -142,7 +142,9 @@ var projects = {
             entrySelector.append(HTMLprojectTitle.replace(dataTemplate, project.title));
             entrySelector.append(HTMLprojectDates.replace(dataTemplate, project.dates));
             entrySelector.append(HTMLprojectDescription.replace(dataTemplate, project.description));
-            entrySelector.append(HTMLprojectImage.replace(dataTemplate, project.image));
+            project.images.forEach(function(image) {
+                entrySelector.append(HTMLprojectImage.replace(dataTemplate, image));
+            });
         });
     }
 }
