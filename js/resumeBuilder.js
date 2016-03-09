@@ -81,11 +81,12 @@ var work = {
 
 var education = {
     'schools': [{
-        'school': 'Faculty of Engineering, Cairo University',
+        'name': 'Faculty of Engineering, Cairo University',
         'degree': 'BA',
-        'years': 'September 2005 - July 2010',
+        'dates': 'September 2005 - July 2010',
         'location': 'Giza, Egypt',
-        'major': 'Computer Engineering',
+        'majors': 'Computer Engineering',   // TODO: Make it array
+        'url': 'http://eng.cu.edu.eg/en/'
     }],
     'onlineCourses': [{
         'title': 'Front-End Web Developer Nanodegree',
@@ -98,11 +99,11 @@ var education = {
             this.schools.forEach(function(school) {
                 $('#education').append(HTMLschoolStart);
                 var entrySelector = $('.education-entry').last();
-                entrySelector.append(HTMLschoolName.replace(dataTemplate, school.school) +
+                entrySelector.append(HTMLschoolName.replace(dataTemplate, school.name) +
                     HTMLschoolDegree.replace(dataTemplate, school.degree));
-                entrySelector.append(HTMLschoolDates.replace(dataTemplate, school.years));
+                entrySelector.append(HTMLschoolDates.replace(dataTemplate, school.dates));
                 entrySelector.append(HTMLschoolLocation.replace(dataTemplate, school.location));
-                entrySelector.append(HTMLschoolMajor.replace(dataTemplate, school.major));
+                entrySelector.append(HTMLschoolMajor.replace(dataTemplate, school.majors));
             });
         }
 
